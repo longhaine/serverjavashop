@@ -1,1 +1,1 @@
-web: node app.js reset
+web: node app.js
