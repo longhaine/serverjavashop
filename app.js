@@ -6,6 +6,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
 }));
+var os = require("os");
 exports.conn = mysql.createConnection({
     host: "65.19.141.67",
     user: "longhaip_admin",
@@ -20,5 +21,6 @@ exports.query = function (sql, callback) {
 }
 app.use(require('./path'));
 app.listen(process.env.PORT || 3000,function(){
-    console.log('running babe');
+    console.log('running on '+os.hostname);
+    
 });
