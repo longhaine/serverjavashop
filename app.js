@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 exports.conn = mysql.createConnection({
     host: "65.19.141.67",
     user: "longhaip_admin",
-    password: "caiginuaday",
+    password: "123456asd",
     database: "longhaip_javashop"
 });
 exports.query = function (sql, callback) {
