@@ -24,6 +24,6 @@ exports.query = function (sql, callback) {
 }
 app.use(require('./path'));
 app.listen(process.env.PORT || 3000,function(){
-    console.log('running on '+os.hostname);
+    console.log('running');
     
 });
