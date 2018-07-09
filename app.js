@@ -6,7 +6,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
 }));
-var os = require("os");
+var http = require("http");
+setInterval(function() {
+    http.get("http://javashop.herokuapp.com");
+}, 1800000);
 exports.conn = mysql.createConnection({
     host: "65.19.141.67",
     user: "longhaip_admin",
