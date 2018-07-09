@@ -58,4 +58,17 @@ router.post('/add', function (req, res, next) {
         }
     });
 });
+router.post('/update', function (req, res, next) {
+    var params = req.body.product
+    var sql = `UPDATE products set ? where id= ?`;
+    mysql.conn.query(sql,[params,req.body.id],function(err,results){
+        if(err) throw err;
+        else
+        {
+            return res.json({
+                message: "success"
+            })
+        }
+    });
+});
 module.exports = router;
