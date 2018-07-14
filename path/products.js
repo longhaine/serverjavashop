@@ -71,4 +71,22 @@ router.post('/update', function (req, res, next) {
         }
     });
 });
+router.get('/search/:q', function (req, res, next) {
+    var sql = `SELECT  products.*, brands.name as nameB, categories.name as nameC FROM products 
+    inner JOIN brands on products.id_brands = brands.id 
+    INNER JOIN categories ON products.id_categories = categories.id WHERE MATCH (products.name) AGAINST (?)`;
+    mysql.conn.query(sql,[req.params.q],function(err,results){
+        if(err) throw err;
+        res.send(results);
+    });
+});
+router.get('/search/:q/category/:category', function (req, res, next) {
+    var sql = `SELECT  products.*, brands.name as nameB, categories.name as nameC FROM products 
+    inner JOIN brands on products.id_brands = brands.id 
+    INNER JOIN categories ON products.id_categories = categories.id WHERE MATCH (products.name) AGAINST (?) and categories.name = ?`;
+    mysql.conn.query(sql,[req.params.q,req.params.category],function(err,results){
+        if(err) throw err;
+        res.send(results);
+    });
+});
 module.exports = router;
